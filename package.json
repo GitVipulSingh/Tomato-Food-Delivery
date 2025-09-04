@@ -1,0 +1,23 @@
+{
+  "name": "my-food-delivery-app",
+  "version": "1.0.0",
+  "description": "A MERN stack food delivery application.",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm install && npm install --prefix backend && npm install --prefix frontend && npm install --prefix admin",
+    "dev": "concurrently -c \"blue,magenta,green\" \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\" \"npm run dev --prefix admin\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "food",
+    "delivery",
+    "mern",
+    "react"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
