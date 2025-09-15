@@ -55,7 +55,7 @@ const paymentVerification = async (req, res) => {
             await order.save();
         }
         // --- THIS IS THE FIX: Ensure it redirects to the frontend URL (port 5173) ---
-        res.redirect(`${process.env.CORS_ORIGIN}/myorders`);
+        res.redirect(`${process.env.CORS_ORIGIN.split(',')[2]}/myorders`);
     } else {
         await orderModel.findOneAndDelete({ "razorpay.order_id": razorpay_order_id });
         // --- THIS IS THE FIX: Ensure the failure redirect also goes to the frontend ---
