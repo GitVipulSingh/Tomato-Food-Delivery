@@ -23,7 +23,19 @@ export const instance = new Razorpay({
 app.use(express.json());
 // This is important for Razorpay's webhook if you use one later
 app.use(express.urlencoded({ extended: true })); 
-app.use(cors());
+
+const allowedOrigins = process.env.CORS_ORIGIN.split(',');
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('CORS not allowed'));
+        }
+    }
+}));
+
 
 // db connection
 connectDB();
